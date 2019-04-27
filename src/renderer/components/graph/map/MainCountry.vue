@@ -1,6 +1,14 @@
 <template>
-    <v-chart class="map" :options="map"
-        autoresize/>
+  <div
+    id="main-country"
+    v-on:click="winResize"
+  >
+    <v-chart
+      class="map"
+      :options="map"
+      autoresize
+    />
+  </div>
 </template>
 
 <script>
@@ -313,57 +321,6 @@ let option = {
   }]
 }
 
-// function renderBrushed(params) {
-//     let mainSeries = params.batch[0].selected[0];
-
-//     let selectedItems = [];
-//     let categoryData = [];
-//     let barData = [];
-//     let maxBar = 30;
-//     let sum = 0;
-//     let count = 0;
-
-//     for (let i = 0; i < mainSeries.dataIndex.length; i++) {
-//         let rawIndex = mainSeries.dataIndex[i];
-//         let dataItem = convertedData[0][rawIndex];
-//         let pmValue = dataItem.value[2];
-
-//         sum += pmValue;
-//         count++;
-
-//         selectedItems.push(dataItem);
-//     }
-
-//        selectedItems.sort(function (a, b) {
-//         //   return b.value[2] - a.value[2];
-//         return a.value-b.value;
-//        });
-
-//     for (let i = 0; i < Math.min(selectedItems.length, maxBar); i++) {
-//         categoryData.push(selectedItems[i].name);
-//         barData.push(selectedItems[i].value[2]);
-//     }
-
-//     this.setOption({
-//         yAxis: {
-//             data: categoryData
-//         },
-//         xAxis: {
-//             axisLabel: {
-//                 show: !!count
-//             }
-//         },
-//         title: {
-//             id: 'statistic',
-//             text: count ? '平均: ' + (sum / count).toFixed(4) : ''
-//         },
-//         series: {
-//             id: 'bar',
-//             //        sort:'descending',
-//             data: barData
-//         }
-//     });
-// }
 export default {
   name: 'MainCountry',
   components: {
@@ -373,17 +330,18 @@ export default {
     return {
       map: option
     }
+  },
+  methods: {
+    winResize: function () {
+      // console.log(e)
+      let t = document.querySelector('#main-country > .map')
+      t.className = 'max'
+      let mask = document.querySelector('.mask-fade')
+      mask.style.display = 'block'
+    }
   }
-
 }
 </script>
 
 <style>
-.map {
-  width: 500px;
-  border: 2px solid gray;
-}
-
-
-
 </style>

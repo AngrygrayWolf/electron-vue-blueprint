@@ -1,6 +1,14 @@
 <template>
-    <v-chart class="map MapBox" :options="map"
-    autoresize/>
+  <div
+    id="map-3d"
+    v-on:click="winResize"
+  >
+    <v-chart
+      class="map MapBox"
+      :options="map"
+      autoresize
+    />
+  </div>
 </template>
 
 
@@ -163,10 +171,18 @@ export default {
     return {
       map: option
     }
+  },
+  methods: {
+    winResize: function (e) {
+      // console.log(e)
+      let t = document.querySelector('#map-3d > .map')
+      t.className = 'max'
+      let mask = document.querySelector('.mask-fade')
+      mask.style.display = 'block'
+    }
   }
 }
 </script>
 
 <style>
-
 </style>

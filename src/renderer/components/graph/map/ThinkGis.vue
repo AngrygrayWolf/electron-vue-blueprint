@@ -1,5 +1,15 @@
 <template>
-    <v-chart class="map" id="thinkGis" :options="map"></v-chart>
+  <div
+    id="think-gis"
+    v-on:click="winResize"
+  >
+    <v-chart
+      class="map"
+      id="thinkGis"
+      :options="map"
+      autoresize
+    ></v-chart>
+  </div>
 </template>
 
 
@@ -114,10 +124,18 @@ export default {
     return {
       map: option
     }
+  },
+  methods: {
+    winResize: function (e) {
+      // console.log(e)
+      let t = document.querySelector('#think-gis > .map')
+      t.className = 'max'
+      let mask = document.querySelector('.mask-fade')
+      mask.style.display = 'block'
+    }
   }
 }
 </script>
 
 <style>
-
 </style>
