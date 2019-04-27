@@ -68,6 +68,7 @@ export default {
 }
 #app {
   background-color: transparent;
+  color:rgba(236,255,255,1);
 }
   .graph_main {
     display: flex;
@@ -96,7 +97,7 @@ export default {
 
 .right {
   float: right;
-  width: 500px;
+  width: 300px;
   height: 100%;
   /* margin-right: 20px; */
 }

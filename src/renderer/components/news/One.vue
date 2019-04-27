@@ -85,10 +85,12 @@ export default {
     font-size: 14px;
     font-family: Arial, sans-serif;
     font-weight: bold;
+    float: left;
 }
 .content{
     color:rgba(87,195,202,1);
     font-size: 11px;
+    float: left;
 }
 
 .time:after {
